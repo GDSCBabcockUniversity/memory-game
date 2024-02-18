@@ -1,0 +1,46 @@
+.grid {
+  position: relative;
+  perspective: 1000px; /* Adjust for depth perception */
+}
+
+.card {
+  position: relative;
+  perspective: inherit;
+}
+
+.front-face,
+.back-face {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+}
+
+.front-face {
+  z-index: 2;
+  transition: transform 0.8s ease;
+}
+
+.card.flip .front-face {
+  transform: rotateY(-180deg);
+}
+
+.card.unflip .front-face {
+  transform: rotateY(0deg);
+}
+
+.back-face {
+  background-color: black;
+  transform: rotateY(180deg);
+  z-index: 1;
+}
+
+.card.flip .back-face {
+  transform: rotateY(0deg);
+}
+
+.card.unflip .back-face {
+  transform: rotateY(180deg);
+}
